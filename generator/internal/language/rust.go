@@ -661,7 +661,7 @@ func (c *RustCodec) HTTPPathFmt(m *api.PathInfo, state *api.APIState) string {
 //
 // In most cases the parameter is a simple string in the form `name`. In those
 // cases the field *must* be a thing that can be formatted to a string, and
-// a simple "req.name" expression will work file.
+// a simple "req.name" expression will work fine.
 //
 // In some cases the parameter is a sequence of `.` separated fields, in the
 // form: `field0.field1 ... .fieldN`. In that case each field from `field0` to
