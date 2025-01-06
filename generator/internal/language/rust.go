@@ -657,7 +657,7 @@ func (c *RustCodec) HTTPPathFmt(m *api.PathInfo, state *api.APIState) string {
 	return fmt
 }
 
-// Returns a Rust expression to access (and if needed validatre) each path parameter.
+// Returns a Rust expression to access (and if needed validate) each path parameter.
 //
 // In most cases the parameter is a simple string in the form `name`. In those
 // cases the field *must* be a thing that can be formatted to a string, and
