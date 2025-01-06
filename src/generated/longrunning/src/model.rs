@@ -101,6 +101,36 @@ pub mod operation {
     }
 }
 
+impl Operation {
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
+    }
+
+    /// Gets the value of `metadata`, mapping Some(wkt::Any) to Ok(wkt::Any) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_metadata(&self) -> Result<&wkt::Any, gax::error::Error> {
+        self.metadata
+            .as_ref()
+            .ok_or_else(|| gax::error::Error::other("field 'metadata' is missing"))
+    }
+
+    /// Gets the value of `done`. As `done` is not an optional field, this method will always return Ok(bool).
+    #[allow(dead_code)]
+    pub(crate) fn get_done(&self) -> Result<&bool, gax::error::Error> {
+        Ok(&self.done)
+    }
+
+    /// Gets the value of `result`, mapping Some(crate::model::operation::Result) to Ok(crate::model::operation::Result) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_result(&self) -> Result<&crate::model::operation::Result, gax::error::Error> {
+        self.result
+            .as_ref()
+            .ok_or_else(|| gax::error::Error::other("field 'result' is missing"))
+    }
+}
+
 /// The request message for
 /// [Operations.GetOperation][google.longrunning.Operations.GetOperation].
 ///
@@ -120,6 +150,14 @@ impl GetOperationRequest {
     pub fn set_name<T: Into<String>>(mut self, v: T) -> Self {
         self.name = v.into();
         self
+    }
+}
+
+impl GetOperationRequest {
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
     }
 }
 
@@ -174,6 +212,32 @@ impl ListOperationsRequest {
     }
 }
 
+impl ListOperationsRequest {
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
+    }
+
+    /// Gets the value of `filter`. As `filter` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_filter(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.filter)
+    }
+
+    /// Gets the value of `page_size`. As `page_size` is not an optional field, this method will always return Ok(i32).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_size(&self) -> Result<&i32, gax::error::Error> {
+        Ok(&self.page_size)
+    }
+
+    /// Gets the value of `page_token`. As `page_token` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_token(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.page_token)
+    }
+}
+
 /// The response message for
 /// [Operations.ListOperations][google.longrunning.Operations.ListOperations].
 ///
@@ -219,6 +283,22 @@ impl gax::paginator::PageableResponse for ListOperationsResponse {
     }
 }
 
+impl ListOperationsResponse {
+    /// Gets the value of `operations`. As `operations` is not an optional field, this method will always return Ok(Vec<crate::model::Operation>).
+    #[allow(dead_code)]
+    pub(crate) fn get_operations(
+        &self,
+    ) -> Result<&Vec<crate::model::Operation>, gax::error::Error> {
+        Ok(&self.operations)
+    }
+
+    /// Gets the value of `next_page_token`. As `next_page_token` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_next_page_token(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.next_page_token)
+    }
+}
+
 /// The request message for
 /// [Operations.CancelOperation][google.longrunning.Operations.CancelOperation].
 ///
@@ -241,6 +321,14 @@ impl CancelOperationRequest {
     }
 }
 
+impl CancelOperationRequest {
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
+    }
+}
+
 /// The request message for
 /// [Operations.DeleteOperation][google.longrunning.Operations.DeleteOperation].
 ///
@@ -260,6 +348,14 @@ impl DeleteOperationRequest {
     pub fn set_name<T: Into<String>>(mut self, v: T) -> Self {
         self.name = v.into();
         self
+    }
+}
+
+impl DeleteOperationRequest {
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
     }
 }
 
@@ -293,6 +389,22 @@ impl WaitOperationRequest {
     pub fn set_timeout<T: Into<Option<wkt::Duration>>>(mut self, v: T) -> Self {
         self.timeout = v.into();
         self
+    }
+}
+
+impl WaitOperationRequest {
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
+    }
+
+    /// Gets the value of `timeout`, mapping Some(wkt::Duration) to Ok(wkt::Duration) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_timeout(&self) -> Result<&wkt::Duration, gax::error::Error> {
+        self.timeout
+            .as_ref()
+            .ok_or_else(|| gax::error::Error::other("field 'timeout' is missing"))
     }
 }
 
@@ -346,5 +458,19 @@ impl OperationInfo {
     pub fn set_metadata_type<T: Into<String>>(mut self, v: T) -> Self {
         self.metadata_type = v.into();
         self
+    }
+}
+
+impl OperationInfo {
+    /// Gets the value of `response_type`. As `response_type` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_response_type(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.response_type)
+    }
+
+    /// Gets the value of `metadata_type`. As `metadata_type` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_metadata_type(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.metadata_type)
     }
 }

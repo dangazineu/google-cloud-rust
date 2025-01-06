@@ -61,6 +61,22 @@ impl gax::paginator::PageableResponse for ListLocationsResponse {
     }
 }
 
+impl ListLocationsResponse {
+
+    /// Gets the value of `locations`. As `locations` is not an optional field, this method will always return Ok(Vec<crate::model::Location>).
+    #[allow(dead_code)]
+    pub(crate) fn get_locations(&self) -> Result<&Vec<crate::model::Location>, gax::error::Error> {
+        Ok(&self.locations)
+    }
+
+    /// Gets the value of `next_page_token`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_next_page_token(&self) -> Result<&String, gax::error::Error> {
+        self.next_page_token.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'next_page_token' is missing"))
+    }
+}
+
 /// A resource that represents a Google Cloud location.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -129,6 +145,43 @@ impl Location {
     }
 }
 
+impl Location {
+
+    /// Gets the value of `name`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        self.name.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'name' is missing"))
+    }
+
+    /// Gets the value of `location_id`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_location_id(&self) -> Result<&String, gax::error::Error> {
+        self.location_id.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'location_id' is missing"))
+    }
+
+    /// Gets the value of `display_name`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_display_name(&self) -> Result<&String, gax::error::Error> {
+        self.display_name.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'display_name' is missing"))
+    }
+
+    /// Gets the value of `labels`. As `labels` is not an optional field, this method will always return Ok(std::collections::HashMap<String,String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_labels(&self) -> Result<&std::collections::HashMap<String,String>, gax::error::Error> {
+        Ok(&self.labels)
+    }
+
+    /// Gets the value of `metadata`, mapping Some(wkt::Any) to Ok(wkt::Any) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_metadata(&self) -> Result<&wkt::Any, gax::error::Error> {
+        self.metadata.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'metadata' is missing"))
+    }
+}
+
 /// Response message for SecretManagerService.ListSecrets.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -183,6 +236,29 @@ impl gax::paginator::PageableResponse for ListSecretsResponse {
 
     fn next_page_token(&self) -> String {
         gax::paginator::extract_token(&self.next_page_token)
+    }
+}
+
+impl ListSecretsResponse {
+
+    /// Gets the value of `secrets`. As `secrets` is not an optional field, this method will always return Ok(Vec<crate::model::Secret>).
+    #[allow(dead_code)]
+    pub(crate) fn get_secrets(&self) -> Result<&Vec<crate::model::Secret>, gax::error::Error> {
+        Ok(&self.secrets)
+    }
+
+    /// Gets the value of `next_page_token`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_next_page_token(&self) -> Result<&String, gax::error::Error> {
+        self.next_page_token.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'next_page_token' is missing"))
+    }
+
+    /// Gets the value of `total_size`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_total_size(&self) -> Result<&i32, gax::error::Error> {
+        self.total_size.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'total_size' is missing"))
     }
 }
 
@@ -378,6 +454,96 @@ impl Secret {
     }
 }
 
+impl Secret {
+
+    /// Gets the value of `name`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        self.name.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'name' is missing"))
+    }
+
+    /// Gets the value of `replication`, mapping Some(crate::model::Replication) to Ok(crate::model::Replication) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_replication(&self) -> Result<&crate::model::Replication, gax::error::Error> {
+        self.replication.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'replication' is missing"))
+    }
+
+    /// Gets the value of `create_time`, mapping Some(wkt::Timestamp) to Ok(wkt::Timestamp) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_create_time(&self) -> Result<&wkt::Timestamp, gax::error::Error> {
+        self.create_time.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'create_time' is missing"))
+    }
+
+    /// Gets the value of `labels`. As `labels` is not an optional field, this method will always return Ok(std::collections::HashMap<String,String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_labels(&self) -> Result<&std::collections::HashMap<String,String>, gax::error::Error> {
+        Ok(&self.labels)
+    }
+
+    /// Gets the value of `topics`. As `topics` is not an optional field, this method will always return Ok(Vec<crate::model::Topic>).
+    #[allow(dead_code)]
+    pub(crate) fn get_topics(&self) -> Result<&Vec<crate::model::Topic>, gax::error::Error> {
+        Ok(&self.topics)
+    }
+
+    /// Gets the value of `expire_time`, mapping Some(wkt::Timestamp) to Ok(wkt::Timestamp) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_expire_time(&self) -> Result<&wkt::Timestamp, gax::error::Error> {
+        self.expire_time.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'expire_time' is missing"))
+    }
+
+    /// Gets the value of `ttl`, mapping Some(wkt::Duration) to Ok(wkt::Duration) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_ttl(&self) -> Result<&wkt::Duration, gax::error::Error> {
+        self.ttl.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'ttl' is missing"))
+    }
+
+    /// Gets the value of `etag`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_etag(&self) -> Result<&String, gax::error::Error> {
+        self.etag.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'etag' is missing"))
+    }
+
+    /// Gets the value of `rotation`, mapping Some(crate::model::Rotation) to Ok(crate::model::Rotation) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_rotation(&self) -> Result<&crate::model::Rotation, gax::error::Error> {
+        self.rotation.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'rotation' is missing"))
+    }
+
+    /// Gets the value of `version_aliases`. As `version_aliases` is not an optional field, this method will always return Ok(std::collections::HashMap<String,i64>).
+    #[allow(dead_code)]
+    pub(crate) fn get_version_aliases(&self) -> Result<&std::collections::HashMap<String,i64>, gax::error::Error> {
+        Ok(&self.version_aliases)
+    }
+
+    /// Gets the value of `annotations`. As `annotations` is not an optional field, this method will always return Ok(std::collections::HashMap<String,String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_annotations(&self) -> Result<&std::collections::HashMap<String,String>, gax::error::Error> {
+        Ok(&self.annotations)
+    }
+
+    /// Gets the value of `version_destroy_ttl`, mapping Some(wkt::Duration) to Ok(wkt::Duration) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_version_destroy_ttl(&self) -> Result<&wkt::Duration, gax::error::Error> {
+        self.version_destroy_ttl.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'version_destroy_ttl' is missing"))
+    }
+
+    /// Gets the value of `customer_managed_encryption`, mapping Some(crate::model::CustomerManagedEncryption) to Ok(crate::model::CustomerManagedEncryption) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_customer_managed_encryption(&self) -> Result<&crate::model::CustomerManagedEncryption, gax::error::Error> {
+        self.customer_managed_encryption.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'customer_managed_encryption' is missing"))
+    }
+}
+
 /// A policy that defines the replication and encryption configuration of data.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -409,6 +575,23 @@ impl Replication {
     }
 }
 
+impl Replication {
+
+    /// Gets the value of `automatic`, mapping Some(crate::model::Automatic) to Ok(crate::model::Automatic) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_automatic(&self) -> Result<&crate::model::Automatic, gax::error::Error> {
+        self.automatic.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'automatic' is missing"))
+    }
+
+    /// Gets the value of `user_managed`, mapping Some(crate::model::UserManaged) to Ok(crate::model::UserManaged) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_user_managed(&self) -> Result<&crate::model::UserManaged, gax::error::Error> {
+        self.user_managed.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'user_managed' is missing"))
+    }
+}
+
 /// A replication policy that replicates the Secret payload without any
 /// restrictions.
 #[serde_with::serde_as]
@@ -433,6 +616,16 @@ impl Automatic {
     pub fn set_customer_managed_encryption<T: Into<Option<crate::model::CustomerManagedEncryption>>>(mut self, v: T) -> Self {
         self.customer_managed_encryption = v.into();
         self
+    }
+}
+
+impl Automatic {
+
+    /// Gets the value of `customer_managed_encryption`, mapping Some(crate::model::CustomerManagedEncryption) to Ok(crate::model::CustomerManagedEncryption) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_customer_managed_encryption(&self) -> Result<&crate::model::CustomerManagedEncryption, gax::error::Error> {
+        self.customer_managed_encryption.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'customer_managed_encryption' is missing"))
     }
 }
 
@@ -468,6 +661,15 @@ impl CustomerManagedEncryption {
     }
 }
 
+impl CustomerManagedEncryption {
+
+    /// Gets the value of `kms_key_name`. As `kms_key_name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_kms_key_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.kms_key_name)
+    }
+}
+
 /// A replication policy that replicates the Secret payload into the
 /// locations specified in Secret.replication.user_managed.replicas
 #[serde_with::serde_as]
@@ -489,6 +691,15 @@ impl UserManaged {
     pub fn set_replicas<T: Into<Vec<crate::model::Replica>>>(mut self, v: T) -> Self {
         self.replicas = v.into();
         self
+    }
+}
+
+impl UserManaged {
+
+    /// Gets the value of `replicas`. As `replicas` is not an optional field, this method will always return Ok(Vec<crate::model::Replica>).
+    #[allow(dead_code)]
+    pub(crate) fn get_replicas(&self) -> Result<&Vec<crate::model::Replica>, gax::error::Error> {
+        Ok(&self.replicas)
     }
 }
 
@@ -530,6 +741,23 @@ impl Replica {
     }
 }
 
+impl Replica {
+
+    /// Gets the value of `location`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        self.location.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'location' is missing"))
+    }
+
+    /// Gets the value of `customer_managed_encryption`, mapping Some(crate::model::CustomerManagedEncryption) to Ok(crate::model::CustomerManagedEncryption) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_customer_managed_encryption(&self) -> Result<&crate::model::CustomerManagedEncryption, gax::error::Error> {
+        self.customer_managed_encryption.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'customer_managed_encryption' is missing"))
+    }
+}
+
 /// A Pub/Sub topic which Secret Manager will publish to when control plane
 /// events occur on this secret.
 #[serde_with::serde_as]
@@ -553,6 +781,15 @@ impl Topic {
     pub fn set_name<T: Into<String>>(mut self, v: T) -> Self {
         self.name = v.into();
         self
+    }
+}
+
+impl Topic {
+
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
     }
 }
 
@@ -595,6 +832,23 @@ impl Rotation {
     pub fn set_rotation_period<T: Into<Option<wkt::Duration>>>(mut self, v: T) -> Self {
         self.rotation_period = v.into();
         self
+    }
+}
+
+impl Rotation {
+
+    /// Gets the value of `next_rotation_time`, mapping Some(wkt::Timestamp) to Ok(wkt::Timestamp) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_next_rotation_time(&self) -> Result<&wkt::Timestamp, gax::error::Error> {
+        self.next_rotation_time.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'next_rotation_time' is missing"))
+    }
+
+    /// Gets the value of `rotation_period`, mapping Some(wkt::Duration) to Ok(wkt::Duration) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_rotation_period(&self) -> Result<&wkt::Duration, gax::error::Error> {
+        self.rotation_period.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'rotation_period' is missing"))
     }
 }
 
@@ -655,6 +909,34 @@ impl AddSecretVersionRequest {
     }
 }
 
+impl AddSecretVersionRequest {
+
+    /// Gets the value of `payload`, mapping Some(crate::model::SecretPayload) to Ok(crate::model::SecretPayload) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_payload(&self) -> Result<&crate::model::SecretPayload, gax::error::Error> {
+        self.payload.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'payload' is missing"))
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+}
+
 /// A secret payload resource in the Secret Manager API. This contains the
 /// sensitive secret payload that is associated with a SecretVersion.
 #[serde_with::serde_as]
@@ -696,6 +978,23 @@ impl SecretPayload {
     pub fn set_data_crc_32_c<T: Into<Option<i64>>>(mut self, v: T) -> Self {
         self.data_crc_32_c = v.into();
         self
+    }
+}
+
+impl SecretPayload {
+
+    /// Gets the value of `data`, mapping Some(bytes::Bytes) to Ok(bytes::Bytes) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_data(&self) -> Result<&bytes::Bytes, gax::error::Error> {
+        self.data.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'data' is missing"))
+    }
+
+    /// Gets the value of `data_crc_32_c`, mapping Some(i64) to Ok(i64) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_data_crc_32_c(&self) -> Result<&i64, gax::error::Error> {
+        self.data_crc_32_c.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'data_crc_32_c' is missing"))
     }
 }
 
@@ -814,6 +1113,72 @@ impl SecretVersion {
     }
 }
 
+impl SecretVersion {
+
+    /// Gets the value of `name`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        self.name.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'name' is missing"))
+    }
+
+    /// Gets the value of `create_time`, mapping Some(wkt::Timestamp) to Ok(wkt::Timestamp) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_create_time(&self) -> Result<&wkt::Timestamp, gax::error::Error> {
+        self.create_time.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'create_time' is missing"))
+    }
+
+    /// Gets the value of `destroy_time`, mapping Some(wkt::Timestamp) to Ok(wkt::Timestamp) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_destroy_time(&self) -> Result<&wkt::Timestamp, gax::error::Error> {
+        self.destroy_time.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'destroy_time' is missing"))
+    }
+
+    /// Gets the value of `state`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_state(&self) -> Result<&String, gax::error::Error> {
+        self.state.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'state' is missing"))
+    }
+
+    /// Gets the value of `replication_status`, mapping Some(crate::model::ReplicationStatus) to Ok(crate::model::ReplicationStatus) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_replication_status(&self) -> Result<&crate::model::ReplicationStatus, gax::error::Error> {
+        self.replication_status.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'replication_status' is missing"))
+    }
+
+    /// Gets the value of `etag`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_etag(&self) -> Result<&String, gax::error::Error> {
+        self.etag.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'etag' is missing"))
+    }
+
+    /// Gets the value of `client_specified_payload_checksum`, mapping Some(bool) to Ok(bool) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_client_specified_payload_checksum(&self) -> Result<&bool, gax::error::Error> {
+        self.client_specified_payload_checksum.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'client_specified_payload_checksum' is missing"))
+    }
+
+    /// Gets the value of `scheduled_destroy_time`, mapping Some(wkt::Timestamp) to Ok(wkt::Timestamp) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_scheduled_destroy_time(&self) -> Result<&wkt::Timestamp, gax::error::Error> {
+        self.scheduled_destroy_time.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'scheduled_destroy_time' is missing"))
+    }
+
+    /// Gets the value of `customer_managed_encryption`, mapping Some(crate::model::CustomerManagedEncryptionStatus) to Ok(crate::model::CustomerManagedEncryptionStatus) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_customer_managed_encryption(&self) -> Result<&crate::model::CustomerManagedEncryptionStatus, gax::error::Error> {
+        self.customer_managed_encryption.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'customer_managed_encryption' is missing"))
+    }
+}
+
 /// The replication status of a SecretVersion.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -853,6 +1218,23 @@ impl ReplicationStatus {
     }
 }
 
+impl ReplicationStatus {
+
+    /// Gets the value of `automatic`, mapping Some(crate::model::AutomaticStatus) to Ok(crate::model::AutomaticStatus) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_automatic(&self) -> Result<&crate::model::AutomaticStatus, gax::error::Error> {
+        self.automatic.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'automatic' is missing"))
+    }
+
+    /// Gets the value of `user_managed`, mapping Some(crate::model::UserManagedStatus) to Ok(crate::model::UserManagedStatus) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_user_managed(&self) -> Result<&crate::model::UserManagedStatus, gax::error::Error> {
+        self.user_managed.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'user_managed' is missing"))
+    }
+}
+
 /// The replication status of a SecretVersion using automatic replication.
 ///
 /// Only populated if the parent Secret has an automatic replication
@@ -875,6 +1257,16 @@ impl AutomaticStatus {
     pub fn set_customer_managed_encryption<T: Into<Option<crate::model::CustomerManagedEncryptionStatus>>>(mut self, v: T) -> Self {
         self.customer_managed_encryption = v.into();
         self
+    }
+}
+
+impl AutomaticStatus {
+
+    /// Gets the value of `customer_managed_encryption`, mapping Some(crate::model::CustomerManagedEncryptionStatus) to Ok(crate::model::CustomerManagedEncryptionStatus) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_customer_managed_encryption(&self) -> Result<&crate::model::CustomerManagedEncryptionStatus, gax::error::Error> {
+        self.customer_managed_encryption.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'customer_managed_encryption' is missing"))
     }
 }
 
@@ -901,6 +1293,15 @@ impl CustomerManagedEncryptionStatus {
     }
 }
 
+impl CustomerManagedEncryptionStatus {
+
+    /// Gets the value of `kms_key_version_name`. As `kms_key_version_name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_kms_key_version_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.kms_key_version_name)
+    }
+}
+
 /// The replication status of a SecretVersion using user-managed
 /// replication.
 ///
@@ -923,6 +1324,15 @@ impl UserManagedStatus {
     pub fn set_replicas<T: Into<Vec<crate::model::ReplicaStatus>>>(mut self, v: T) -> Self {
         self.replicas = v.into();
         self
+    }
+}
+
+impl UserManagedStatus {
+
+    /// Gets the value of `replicas`. As `replicas` is not an optional field, this method will always return Ok(Vec<crate::model::ReplicaStatus>).
+    #[allow(dead_code)]
+    pub(crate) fn get_replicas(&self) -> Result<&Vec<crate::model::ReplicaStatus>, gax::error::Error> {
+        Ok(&self.replicas)
     }
 }
 
@@ -959,6 +1369,23 @@ impl ReplicaStatus {
     }
 }
 
+impl ReplicaStatus {
+
+    /// Gets the value of `location`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        self.location.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'location' is missing"))
+    }
+
+    /// Gets the value of `customer_managed_encryption`, mapping Some(crate::model::CustomerManagedEncryptionStatus) to Ok(crate::model::CustomerManagedEncryptionStatus) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_customer_managed_encryption(&self) -> Result<&crate::model::CustomerManagedEncryptionStatus, gax::error::Error> {
+        self.customer_managed_encryption.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'customer_managed_encryption' is missing"))
+    }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
 /// or the response type of an API method. For instance:
@@ -973,6 +1400,9 @@ impl ReplicaStatus {
 #[serde(default, rename_all = "camelCase")]
 #[non_exhaustive]
 pub struct Empty {
+}
+
+impl Empty {
 }
 
 impl Empty {
@@ -1035,6 +1465,29 @@ impl gax::paginator::PageableResponse for ListSecretVersionsResponse {
     }
 }
 
+impl ListSecretVersionsResponse {
+
+    /// Gets the value of `versions`. As `versions` is not an optional field, this method will always return Ok(Vec<crate::model::SecretVersion>).
+    #[allow(dead_code)]
+    pub(crate) fn get_versions(&self) -> Result<&Vec<crate::model::SecretVersion>, gax::error::Error> {
+        Ok(&self.versions)
+    }
+
+    /// Gets the value of `next_page_token`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_next_page_token(&self) -> Result<&String, gax::error::Error> {
+        self.next_page_token.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'next_page_token' is missing"))
+    }
+
+    /// Gets the value of `total_size`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_total_size(&self) -> Result<&i32, gax::error::Error> {
+        self.total_size.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'total_size' is missing"))
+    }
+}
+
 /// Response message for SecretManagerService.AccessSecretVersion.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -1065,6 +1518,23 @@ impl AccessSecretVersionResponse {
     pub fn set_payload<T: Into<Option<crate::model::SecretPayload>>>(mut self, v: T) -> Self {
         self.payload = v.into();
         self
+    }
+}
+
+impl AccessSecretVersionResponse {
+
+    /// Gets the value of `name`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        self.name.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'name' is missing"))
+    }
+
+    /// Gets the value of `payload`, mapping Some(crate::model::SecretPayload) to Ok(crate::model::SecretPayload) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_payload(&self) -> Result<&crate::model::SecretPayload, gax::error::Error> {
+        self.payload.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'payload' is missing"))
     }
 }
 
@@ -1139,6 +1609,40 @@ impl DisableSecretVersionRequest {
     }
 }
 
+impl DisableSecretVersionRequest {
+
+    /// Gets the value of `etag`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_etag(&self) -> Result<&String, gax::error::Error> {
+        self.etag.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'etag' is missing"))
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `version`. As `version` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_version(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.version)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+}
+
 /// Request message for SecretManagerService.EnableSecretVersion.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -1207,6 +1711,40 @@ impl EnableSecretVersionRequest {
     pub fn set_location<T: Into<String>>(mut self, v: T) -> Self {
         self.location = v.into();
         self
+    }
+}
+
+impl EnableSecretVersionRequest {
+
+    /// Gets the value of `etag`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_etag(&self) -> Result<&String, gax::error::Error> {
+        self.etag.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'etag' is missing"))
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `version`. As `version` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_version(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.version)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
     }
 }
 
@@ -1281,6 +1819,40 @@ impl DestroySecretVersionRequest {
     }
 }
 
+impl DestroySecretVersionRequest {
+
+    /// Gets the value of `etag`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_etag(&self) -> Result<&String, gax::error::Error> {
+        self.etag.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'etag' is missing"))
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `version`. As `version` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_version(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.version)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+}
+
 /// Request message for `SetIamPolicy` method.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -1352,6 +1924,41 @@ impl SetIamPolicyRequest {
     pub fn set_location<T: Into<String>>(mut self, v: T) -> Self {
         self.location = v.into();
         self
+    }
+}
+
+impl SetIamPolicyRequest {
+
+    /// Gets the value of `policy`, mapping Some(crate::model::Policy) to Ok(crate::model::Policy) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_policy(&self) -> Result<&crate::model::Policy, gax::error::Error> {
+        self.policy.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'policy' is missing"))
+    }
+
+    /// Gets the value of `update_mask`, mapping Some(wkt::FieldMask) to Ok(wkt::FieldMask) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_update_mask(&self) -> Result<&wkt::FieldMask, gax::error::Error> {
+        self.update_mask.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'update_mask' is missing"))
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
     }
 }
 
@@ -1520,6 +2127,35 @@ impl Policy {
     }
 }
 
+impl Policy {
+
+    /// Gets the value of `version`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_version(&self) -> Result<&i32, gax::error::Error> {
+        self.version.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'version' is missing"))
+    }
+
+    /// Gets the value of `bindings`. As `bindings` is not an optional field, this method will always return Ok(Vec<crate::model::Binding>).
+    #[allow(dead_code)]
+    pub(crate) fn get_bindings(&self) -> Result<&Vec<crate::model::Binding>, gax::error::Error> {
+        Ok(&self.bindings)
+    }
+
+    /// Gets the value of `audit_configs`. As `audit_configs` is not an optional field, this method will always return Ok(Vec<crate::model::AuditConfig>).
+    #[allow(dead_code)]
+    pub(crate) fn get_audit_configs(&self) -> Result<&Vec<crate::model::AuditConfig>, gax::error::Error> {
+        Ok(&self.audit_configs)
+    }
+
+    /// Gets the value of `etag`, mapping Some(bytes::Bytes) to Ok(bytes::Bytes) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_etag(&self) -> Result<&bytes::Bytes, gax::error::Error> {
+        self.etag.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'etag' is missing"))
+    }
+}
+
 /// Associates `members`, or principals, with a `role`.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -1659,6 +2295,29 @@ impl Binding {
     }
 }
 
+impl Binding {
+
+    /// Gets the value of `role`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_role(&self) -> Result<&String, gax::error::Error> {
+        self.role.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'role' is missing"))
+    }
+
+    /// Gets the value of `members`. As `members` is not an optional field, this method will always return Ok(Vec<String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_members(&self) -> Result<&Vec<String>, gax::error::Error> {
+        Ok(&self.members)
+    }
+
+    /// Gets the value of `condition`, mapping Some(crate::model::Expr) to Ok(crate::model::Expr) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_condition(&self) -> Result<&crate::model::Expr, gax::error::Error> {
+        self.condition.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'condition' is missing"))
+    }
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
 /// are documented at <https://github.com/google/cel-spec>.
@@ -1753,6 +2412,37 @@ impl Expr {
     }
 }
 
+impl Expr {
+
+    /// Gets the value of `expression`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_expression(&self) -> Result<&String, gax::error::Error> {
+        self.expression.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'expression' is missing"))
+    }
+
+    /// Gets the value of `title`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_title(&self) -> Result<&String, gax::error::Error> {
+        self.title.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'title' is missing"))
+    }
+
+    /// Gets the value of `description`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_description(&self) -> Result<&String, gax::error::Error> {
+        self.description.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'description' is missing"))
+    }
+
+    /// Gets the value of `location`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        self.location.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'location' is missing"))
+    }
+}
+
 /// Specifies the audit configuration for a service.
 /// The configuration determines which permission types are logged, and what
 /// identities, if any, are exempted from logging.
@@ -1838,6 +2528,22 @@ impl AuditConfig {
     }
 }
 
+impl AuditConfig {
+
+    /// Gets the value of `service`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_service(&self) -> Result<&String, gax::error::Error> {
+        self.service.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'service' is missing"))
+    }
+
+    /// Gets the value of `audit_log_configs`. As `audit_log_configs` is not an optional field, this method will always return Ok(Vec<crate::model::AuditLogConfig>).
+    #[allow(dead_code)]
+    pub(crate) fn get_audit_log_configs(&self) -> Result<&Vec<crate::model::AuditLogConfig>, gax::error::Error> {
+        Ok(&self.audit_log_configs)
+    }
+}
+
 /// Provides the configuration for logging a type of permissions.
 /// Example:
 ///
@@ -1888,6 +2594,22 @@ impl AuditLogConfig {
     pub fn set_exempted_members<T: Into<Vec<String>>>(mut self, v: T) -> Self {
         self.exempted_members = v.into();
         self
+    }
+}
+
+impl AuditLogConfig {
+
+    /// Gets the value of `log_type`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_log_type(&self) -> Result<&String, gax::error::Error> {
+        self.log_type.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'log_type' is missing"))
+    }
+
+    /// Gets the value of `exempted_members`. As `exempted_members` is not an optional field, this method will always return Ok(Vec<String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_exempted_members(&self) -> Result<&Vec<String>, gax::error::Error> {
+        Ok(&self.exempted_members)
     }
 }
 
@@ -1951,6 +2673,33 @@ impl TestIamPermissionsRequest {
     }
 }
 
+impl TestIamPermissionsRequest {
+
+    /// Gets the value of `permissions`. As `permissions` is not an optional field, this method will always return Ok(Vec<String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_permissions(&self) -> Result<&Vec<String>, gax::error::Error> {
+        Ok(&self.permissions)
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+}
+
 /// Response message for `TestIamPermissions` method.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -1970,6 +2719,15 @@ impl TestIamPermissionsResponse {
     pub fn set_permissions<T: Into<Vec<String>>>(mut self, v: T) -> Self {
         self.permissions = v.into();
         self
+    }
+}
+
+impl TestIamPermissionsResponse {
+
+    /// Gets the value of `permissions`. As `permissions` is not an optional field, this method will always return Ok(Vec<String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_permissions(&self) -> Result<&Vec<String>, gax::error::Error> {
+        Ok(&self.permissions)
     }
 }
 
@@ -2030,6 +2788,36 @@ impl ListLocationsRequest {
     }
 }
 
+impl ListLocationsRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `filter`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_filter(&self) -> Result<&String, gax::error::Error> {
+        self.filter.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'filter' is missing"))
+    }
+
+    /// Gets the value of `page_size`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_size(&self) -> Result<&i32, gax::error::Error> {
+        self.page_size.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_size' is missing"))
+    }
+
+    /// Gets the value of `page_token`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_token(&self) -> Result<&String, gax::error::Error> {
+        self.page_token.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_token' is missing"))
+    }
+}
+
 /// The request message for GetLocation.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -2062,6 +2850,21 @@ impl GetLocationRequest {
     pub fn set_location<T: Into<String>>(mut self, v: T) -> Self {
         self.location = v.into();
         self
+    }
+}
+
+impl GetLocationRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
     }
 }
 
@@ -2125,6 +2928,36 @@ impl ListSecretsRequest {
     }
 }
 
+impl ListSecretsRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `page_size`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_size(&self) -> Result<&i32, gax::error::Error> {
+        self.page_size.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_size' is missing"))
+    }
+
+    /// Gets the value of `page_token`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_token(&self) -> Result<&String, gax::error::Error> {
+        self.page_token.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_token' is missing"))
+    }
+
+    /// Gets the value of `filter`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_filter(&self) -> Result<&String, gax::error::Error> {
+        self.filter.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'filter' is missing"))
+    }
+}
+
 /// The request message for CreateSecret.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -2169,6 +3002,28 @@ impl CreateSecretRequest {
     pub fn set_secret_id<T: Into<String>>(mut self, v: T) -> Self {
         self.secret_id = v.into();
         self
+    }
+}
+
+impl CreateSecretRequest {
+
+    /// Gets the value of `request_body`, mapping Some(crate::model::Secret) to Ok(crate::model::Secret) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_request_body(&self) -> Result<&crate::model::Secret, gax::error::Error> {
+        self.request_body.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'request_body' is missing"))
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret_id`. As `secret_id` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret_id(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret_id)
     }
 }
 
@@ -2244,6 +3099,42 @@ impl ListSecretsByProjectAndLocationRequest {
     }
 }
 
+impl ListSecretsByProjectAndLocationRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+
+    /// Gets the value of `page_size`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_size(&self) -> Result<&i32, gax::error::Error> {
+        self.page_size.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_size' is missing"))
+    }
+
+    /// Gets the value of `page_token`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_token(&self) -> Result<&String, gax::error::Error> {
+        self.page_token.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_token' is missing"))
+    }
+
+    /// Gets the value of `filter`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_filter(&self) -> Result<&String, gax::error::Error> {
+        self.filter.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'filter' is missing"))
+    }
+}
+
 /// The request message for CreateSecretByProjectAndLocation.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -2303,6 +3194,34 @@ impl CreateSecretByProjectAndLocationRequest {
     }
 }
 
+impl CreateSecretByProjectAndLocationRequest {
+
+    /// Gets the value of `request_body`, mapping Some(crate::model::Secret) to Ok(crate::model::Secret) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_request_body(&self) -> Result<&crate::model::Secret, gax::error::Error> {
+        self.request_body.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'request_body' is missing"))
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+
+    /// Gets the value of `secret_id`. As `secret_id` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret_id(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret_id)
+    }
+}
+
 /// The request message for GetSecret.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -2335,6 +3254,21 @@ impl GetSecretRequest {
     pub fn set_secret<T: Into<String>>(mut self, v: T) -> Self {
         self.secret = v.into();
         self
+    }
+}
+
+impl GetSecretRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
     }
 }
 
@@ -2382,6 +3316,28 @@ impl DeleteSecretRequest {
     pub fn set_etag<T: Into<Option<String>>>(mut self, v: T) -> Self {
         self.etag = v.into();
         self
+    }
+}
+
+impl DeleteSecretRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `etag`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_etag(&self) -> Result<&String, gax::error::Error> {
+        self.etag.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'etag' is missing"))
     }
 }
 
@@ -2440,6 +3396,34 @@ impl UpdateSecretRequest {
     }
 }
 
+impl UpdateSecretRequest {
+
+    /// Gets the value of `request_body`, mapping Some(crate::model::Secret) to Ok(crate::model::Secret) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_request_body(&self) -> Result<&crate::model::Secret, gax::error::Error> {
+        self.request_body.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'request_body' is missing"))
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `update_mask`. As `update_mask` is not an optional field, this method will always return Ok(wkt::FieldMask).
+    #[allow(dead_code)]
+    pub(crate) fn get_update_mask(&self) -> Result<&wkt::FieldMask, gax::error::Error> {
+        Ok(&self.update_mask)
+    }
+}
+
 /// The request message for GetSecretByProjectAndLocationAndSecret.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -2484,6 +3468,27 @@ impl GetSecretByProjectAndLocationAndSecretRequest {
     pub fn set_secret<T: Into<String>>(mut self, v: T) -> Self {
         self.secret = v.into();
         self
+    }
+}
+
+impl GetSecretByProjectAndLocationAndSecretRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
     }
 }
 
@@ -2543,6 +3548,34 @@ impl DeleteSecretByProjectAndLocationAndSecretRequest {
     pub fn set_etag<T: Into<Option<String>>>(mut self, v: T) -> Self {
         self.etag = v.into();
         self
+    }
+}
+
+impl DeleteSecretByProjectAndLocationAndSecretRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `etag`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_etag(&self) -> Result<&String, gax::error::Error> {
+        self.etag.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'etag' is missing"))
     }
 }
 
@@ -2610,6 +3643,40 @@ impl UpdateSecretByProjectAndLocationAndSecretRequest {
     pub fn set_update_mask<T: Into<wkt::FieldMask>>(mut self, v: T) -> Self {
         self.update_mask = v.into();
         self
+    }
+}
+
+impl UpdateSecretByProjectAndLocationAndSecretRequest {
+
+    /// Gets the value of `request_body`, mapping Some(crate::model::Secret) to Ok(crate::model::Secret) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_request_body(&self) -> Result<&crate::model::Secret, gax::error::Error> {
+        self.request_body.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'request_body' is missing"))
+    }
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `update_mask`. As `update_mask` is not an optional field, this method will always return Ok(wkt::FieldMask).
+    #[allow(dead_code)]
+    pub(crate) fn get_update_mask(&self) -> Result<&wkt::FieldMask, gax::error::Error> {
+        Ok(&self.update_mask)
     }
 }
 
@@ -2682,6 +3749,42 @@ impl ListSecretVersionsRequest {
     pub fn set_filter<T: Into<Option<String>>>(mut self, v: T) -> Self {
         self.filter = v.into();
         self
+    }
+}
+
+impl ListSecretVersionsRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `page_size`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_size(&self) -> Result<&i32, gax::error::Error> {
+        self.page_size.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_size' is missing"))
+    }
+
+    /// Gets the value of `page_token`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_token(&self) -> Result<&String, gax::error::Error> {
+        self.page_token.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_token' is missing"))
+    }
+
+    /// Gets the value of `filter`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_filter(&self) -> Result<&String, gax::error::Error> {
+        self.filter.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'filter' is missing"))
     }
 }
 
@@ -2769,6 +3872,48 @@ impl ListSecretVersionsByProjectAndLocationAndSecretRequest {
     }
 }
 
+impl ListSecretVersionsByProjectAndLocationAndSecretRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `page_size`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_size(&self) -> Result<&i32, gax::error::Error> {
+        self.page_size.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_size' is missing"))
+    }
+
+    /// Gets the value of `page_token`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_token(&self) -> Result<&String, gax::error::Error> {
+        self.page_token.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'page_token' is missing"))
+    }
+
+    /// Gets the value of `filter`, mapping Some(String) to Ok(String) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_filter(&self) -> Result<&String, gax::error::Error> {
+        self.filter.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'filter' is missing"))
+    }
+}
+
 /// The request message for GetSecretVersion.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -2813,6 +3958,27 @@ impl GetSecretVersionRequest {
     pub fn set_version<T: Into<String>>(mut self, v: T) -> Self {
         self.version = v.into();
         self
+    }
+}
+
+impl GetSecretVersionRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `version`. As `version` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_version(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.version)
     }
 }
 
@@ -2875,6 +4041,33 @@ impl GetSecretVersionByProjectAndLocationAndSecretAndVersionRequest {
     }
 }
 
+impl GetSecretVersionByProjectAndLocationAndSecretAndVersionRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `version`. As `version` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_version(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.version)
+    }
+}
+
 /// The request message for AccessSecretVersion.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -2919,6 +4112,27 @@ impl AccessSecretVersionRequest {
     pub fn set_version<T: Into<String>>(mut self, v: T) -> Self {
         self.version = v.into();
         self
+    }
+}
+
+impl AccessSecretVersionRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `version`. As `version` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_version(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.version)
     }
 }
 
@@ -2981,6 +4195,33 @@ impl AccessSecretVersionByProjectAndLocationAndSecretAndVersionRequest {
     }
 }
 
+impl AccessSecretVersionByProjectAndLocationAndSecretAndVersionRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `version`. As `version` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_version(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.version)
+    }
+}
+
 /// The request message for GetIamPolicy.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -3040,6 +4281,28 @@ impl GetIamPolicyRequest {
     pub fn set_options_requested_policy_version<T: Into<Option<i32>>>(mut self, v: T) -> Self {
         self.options_requested_policy_version = v.into();
         self
+    }
+}
+
+impl GetIamPolicyRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `options_requested_policy_version`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_options_requested_policy_version(&self) -> Result<&i32, gax::error::Error> {
+        self.options_requested_policy_version.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'options_requested_policy_version' is missing"))
     }
 }
 
@@ -3114,5 +4377,33 @@ impl GetIamPolicyByProjectAndLocationAndSecretRequest {
     pub fn set_options_requested_policy_version<T: Into<Option<i32>>>(mut self, v: T) -> Self {
         self.options_requested_policy_version = v.into();
         self
+    }
+}
+
+impl GetIamPolicyByProjectAndLocationAndSecretRequest {
+
+    /// Gets the value of `project`. As `project` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_project(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.project)
+    }
+
+    /// Gets the value of `location`. As `location` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location)
+    }
+
+    /// Gets the value of `secret`. As `secret` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_secret(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.secret)
+    }
+
+    /// Gets the value of `options_requested_policy_version`, mapping Some(i32) to Ok(i32) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_options_requested_policy_version(&self) -> Result<&i32, gax::error::Error> {
+        self.options_requested_policy_version.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field 'options_requested_policy_version' is missing"))
     }
 }

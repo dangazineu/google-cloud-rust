@@ -64,6 +64,30 @@ impl SetIamPolicyRequest {
     }
 }
 
+impl SetIamPolicyRequest {
+    /// Gets the value of `resource`. As `resource` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_resource(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.resource)
+    }
+
+    /// Gets the value of `policy`, mapping Some(crate::model::Policy) to Ok(crate::model::Policy) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_policy(&self) -> Result<&crate::model::Policy, gax::error::Error> {
+        self.policy
+            .as_ref()
+            .ok_or_else(|| gax::error::Error::other("field 'policy' is missing"))
+    }
+
+    /// Gets the value of `update_mask`, mapping Some(wkt::FieldMask) to Ok(wkt::FieldMask) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_update_mask(&self) -> Result<&wkt::FieldMask, gax::error::Error> {
+        self.update_mask
+            .as_ref()
+            .ok_or_else(|| gax::error::Error::other("field 'update_mask' is missing"))
+    }
+}
+
 /// Request message for `GetIamPolicy` method.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -92,6 +116,22 @@ impl GetIamPolicyRequest {
     pub fn set_options<T: Into<Option<crate::model::GetPolicyOptions>>>(mut self, v: T) -> Self {
         self.options = v.into();
         self
+    }
+}
+
+impl GetIamPolicyRequest {
+    /// Gets the value of `resource`. As `resource` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_resource(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.resource)
+    }
+
+    /// Gets the value of `options`, mapping Some(crate::model::GetPolicyOptions) to Ok(crate::model::GetPolicyOptions) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_options(&self) -> Result<&crate::model::GetPolicyOptions, gax::error::Error> {
+        self.options
+            .as_ref()
+            .ok_or_else(|| gax::error::Error::other("field 'options' is missing"))
     }
 }
 
@@ -128,6 +168,20 @@ impl TestIamPermissionsRequest {
     }
 }
 
+impl TestIamPermissionsRequest {
+    /// Gets the value of `resource`. As `resource` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_resource(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.resource)
+    }
+
+    /// Gets the value of `permissions`. As `permissions` is not an optional field, this method will always return Ok(Vec<String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_permissions(&self) -> Result<&Vec<String>, gax::error::Error> {
+        Ok(&self.permissions)
+    }
+}
+
 /// Response message for `TestIamPermissions` method.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -145,6 +199,14 @@ impl TestIamPermissionsResponse {
     pub fn set_permissions<T: Into<Vec<String>>>(mut self, v: T) -> Self {
         self.permissions = v.into();
         self
+    }
+}
+
+impl TestIamPermissionsResponse {
+    /// Gets the value of `permissions`. As `permissions` is not an optional field, this method will always return Ok(Vec<String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_permissions(&self) -> Result<&Vec<String>, gax::error::Error> {
+        Ok(&self.permissions)
     }
 }
 
@@ -180,6 +242,14 @@ impl GetPolicyOptions {
     pub fn set_requested_policy_version<T: Into<i32>>(mut self, v: T) -> Self {
         self.requested_policy_version = v.into();
         self
+    }
+}
+
+impl GetPolicyOptions {
+    /// Gets the value of `requested_policy_version`. As `requested_policy_version` is not an optional field, this method will always return Ok(i32).
+    #[allow(dead_code)]
+    pub(crate) fn get_requested_policy_version(&self) -> Result<&i32, gax::error::Error> {
+        Ok(&self.requested_policy_version)
     }
 }
 
@@ -348,6 +418,34 @@ impl Policy {
     }
 }
 
+impl Policy {
+    /// Gets the value of `version`. As `version` is not an optional field, this method will always return Ok(i32).
+    #[allow(dead_code)]
+    pub(crate) fn get_version(&self) -> Result<&i32, gax::error::Error> {
+        Ok(&self.version)
+    }
+
+    /// Gets the value of `bindings`. As `bindings` is not an optional field, this method will always return Ok(Vec<crate::model::Binding>).
+    #[allow(dead_code)]
+    pub(crate) fn get_bindings(&self) -> Result<&Vec<crate::model::Binding>, gax::error::Error> {
+        Ok(&self.bindings)
+    }
+
+    /// Gets the value of `audit_configs`. As `audit_configs` is not an optional field, this method will always return Ok(Vec<crate::model::AuditConfig>).
+    #[allow(dead_code)]
+    pub(crate) fn get_audit_configs(
+        &self,
+    ) -> Result<&Vec<crate::model::AuditConfig>, gax::error::Error> {
+        Ok(&self.audit_configs)
+    }
+
+    /// Gets the value of `etag`. As `etag` is not an optional field, this method will always return Ok(bytes::Bytes).
+    #[allow(dead_code)]
+    pub(crate) fn get_etag(&self) -> Result<&bytes::Bytes, gax::error::Error> {
+        Ok(&self.etag)
+    }
+}
+
 /// Associates `members`, or principals, with a `role`.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -442,6 +540,28 @@ impl Binding {
     }
 }
 
+impl Binding {
+    /// Gets the value of `role`. As `role` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_role(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.role)
+    }
+
+    /// Gets the value of `members`. As `members` is not an optional field, this method will always return Ok(Vec<String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_members(&self) -> Result<&Vec<String>, gax::error::Error> {
+        Ok(&self.members)
+    }
+
+    /// Gets the value of `condition`, mapping Some(gtype::model::Expr) to Ok(gtype::model::Expr) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_condition(&self) -> Result<&gtype::model::Expr, gax::error::Error> {
+        self.condition
+            .as_ref()
+            .ok_or_else(|| gax::error::Error::other("field 'condition' is missing"))
+    }
+}
+
 /// Specifies the audit configuration for a service.
 /// The configuration determines which permission types are logged, and what
 /// identities, if any, are exempted from logging.
@@ -525,6 +645,22 @@ impl AuditConfig {
     ) -> Self {
         self.audit_log_configs = v.into();
         self
+    }
+}
+
+impl AuditConfig {
+    /// Gets the value of `service`. As `service` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_service(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.service)
+    }
+
+    /// Gets the value of `audit_log_configs`. As `audit_log_configs` is not an optional field, this method will always return Ok(Vec<crate::model::AuditLogConfig>).
+    #[allow(dead_code)]
+    pub(crate) fn get_audit_log_configs(
+        &self,
+    ) -> Result<&Vec<crate::model::AuditLogConfig>, gax::error::Error> {
+        Ok(&self.audit_log_configs)
     }
 }
 
@@ -619,6 +755,22 @@ pub mod audit_log_config {
     }
 }
 
+impl AuditLogConfig {
+    /// Gets the value of `log_type`. As `log_type` is not an optional field, this method will always return Ok(crate::model::audit_log_config::LogType).
+    #[allow(dead_code)]
+    pub(crate) fn get_log_type(
+        &self,
+    ) -> Result<&crate::model::audit_log_config::LogType, gax::error::Error> {
+        Ok(&self.log_type)
+    }
+
+    /// Gets the value of `exempted_members`. As `exempted_members` is not an optional field, this method will always return Ok(Vec<String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_exempted_members(&self) -> Result<&Vec<String>, gax::error::Error> {
+        Ok(&self.exempted_members)
+    }
+}
+
 /// The difference delta between two policies.
 #[serde_with::serde_as]
 #[derive(Clone, Debug, Default, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -648,6 +800,24 @@ impl PolicyDelta {
     ) -> Self {
         self.audit_config_deltas = v.into();
         self
+    }
+}
+
+impl PolicyDelta {
+    /// Gets the value of `binding_deltas`. As `binding_deltas` is not an optional field, this method will always return Ok(Vec<crate::model::BindingDelta>).
+    #[allow(dead_code)]
+    pub(crate) fn get_binding_deltas(
+        &self,
+    ) -> Result<&Vec<crate::model::BindingDelta>, gax::error::Error> {
+        Ok(&self.binding_deltas)
+    }
+
+    /// Gets the value of `audit_config_deltas`. As `audit_config_deltas` is not an optional field, this method will always return Ok(Vec<crate::model::AuditConfigDelta>).
+    #[allow(dead_code)]
+    pub(crate) fn get_audit_config_deltas(
+        &self,
+    ) -> Result<&Vec<crate::model::AuditConfigDelta>, gax::error::Error> {
+        Ok(&self.audit_config_deltas)
     }
 }
 
@@ -736,6 +906,36 @@ pub mod binding_delta {
 
         /// Removal of a Binding.
         pub const REMOVE: &str = "REMOVE";
+    }
+}
+
+impl BindingDelta {
+    /// Gets the value of `action`. As `action` is not an optional field, this method will always return Ok(crate::model::binding_delta::Action).
+    #[allow(dead_code)]
+    pub(crate) fn get_action(
+        &self,
+    ) -> Result<&crate::model::binding_delta::Action, gax::error::Error> {
+        Ok(&self.action)
+    }
+
+    /// Gets the value of `role`. As `role` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_role(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.role)
+    }
+
+    /// Gets the value of `member`. As `member` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_member(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.member)
+    }
+
+    /// Gets the value of `condition`, mapping Some(gtype::model::Expr) to Ok(gtype::model::Expr) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_condition(&self) -> Result<&gtype::model::Expr, gax::error::Error> {
+        self.condition
+            .as_ref()
+            .ok_or_else(|| gax::error::Error::other("field 'condition' is missing"))
     }
 }
 
@@ -830,6 +1030,34 @@ pub mod audit_config_delta {
     }
 }
 
+impl AuditConfigDelta {
+    /// Gets the value of `action`. As `action` is not an optional field, this method will always return Ok(crate::model::audit_config_delta::Action).
+    #[allow(dead_code)]
+    pub(crate) fn get_action(
+        &self,
+    ) -> Result<&crate::model::audit_config_delta::Action, gax::error::Error> {
+        Ok(&self.action)
+    }
+
+    /// Gets the value of `service`. As `service` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_service(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.service)
+    }
+
+    /// Gets the value of `exempted_member`. As `exempted_member` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_exempted_member(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.exempted_member)
+    }
+
+    /// Gets the value of `log_type`. As `log_type` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_log_type(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.log_type)
+    }
+}
+
 /// Output-only policy member strings of a Google Cloud resource's built-in
 /// identity.
 #[serde_with::serde_as]
@@ -869,5 +1097,19 @@ impl ResourcePolicyMember {
     pub fn set_iam_policy_uid_principal<T: Into<String>>(mut self, v: T) -> Self {
         self.iam_policy_uid_principal = v.into();
         self
+    }
+}
+
+impl ResourcePolicyMember {
+    /// Gets the value of `iam_policy_name_principal`. As `iam_policy_name_principal` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_iam_policy_name_principal(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.iam_policy_name_principal)
+    }
+
+    /// Gets the value of `iam_policy_uid_principal`. As `iam_policy_uid_principal` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_iam_policy_uid_principal(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.iam_policy_uid_principal)
     }
 }

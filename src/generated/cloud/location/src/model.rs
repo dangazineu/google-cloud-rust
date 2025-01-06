@@ -67,6 +67,32 @@ impl ListLocationsRequest {
     }
 }
 
+impl ListLocationsRequest {
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
+    }
+
+    /// Gets the value of `filter`. As `filter` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_filter(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.filter)
+    }
+
+    /// Gets the value of `page_size`. As `page_size` is not an optional field, this method will always return Ok(i32).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_size(&self) -> Result<&i32, gax::error::Error> {
+        Ok(&self.page_size)
+    }
+
+    /// Gets the value of `page_token`. As `page_token` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_page_token(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.page_token)
+    }
+}
+
 /// The response message for [Locations.ListLocations][google.cloud.location.Locations.ListLocations].
 ///
 /// [google.cloud.location.Locations.ListLocations]: crate::traits::Locations::list_locations
@@ -111,6 +137,20 @@ impl gax::paginator::PageableResponse for ListLocationsResponse {
     }
 }
 
+impl ListLocationsResponse {
+    /// Gets the value of `locations`. As `locations` is not an optional field, this method will always return Ok(Vec<crate::model::Location>).
+    #[allow(dead_code)]
+    pub(crate) fn get_locations(&self) -> Result<&Vec<crate::model::Location>, gax::error::Error> {
+        Ok(&self.locations)
+    }
+
+    /// Gets the value of `next_page_token`. As `next_page_token` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_next_page_token(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.next_page_token)
+    }
+}
+
 /// The request message for [Locations.GetLocation][google.cloud.location.Locations.GetLocation].
 ///
 /// [google.cloud.location.Locations.GetLocation]: crate::traits::Locations::get_location
@@ -129,6 +169,14 @@ impl GetLocationRequest {
     pub fn set_name<T: Into<String>>(mut self, v: T) -> Self {
         self.name = v.into();
         self
+    }
+}
+
+impl GetLocationRequest {
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
     }
 }
 
@@ -195,5 +243,41 @@ impl Location {
     pub fn set_metadata<T: Into<Option<wkt::Any>>>(mut self, v: T) -> Self {
         self.metadata = v.into();
         self
+    }
+}
+
+impl Location {
+    /// Gets the value of `name`. As `name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.name)
+    }
+
+    /// Gets the value of `location_id`. As `location_id` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_location_id(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.location_id)
+    }
+
+    /// Gets the value of `display_name`. As `display_name` is not an optional field, this method will always return Ok(String).
+    #[allow(dead_code)]
+    pub(crate) fn get_display_name(&self) -> Result<&String, gax::error::Error> {
+        Ok(&self.display_name)
+    }
+
+    /// Gets the value of `labels`. As `labels` is not an optional field, this method will always return Ok(std::collections::HashMap<String,String>).
+    #[allow(dead_code)]
+    pub(crate) fn get_labels(
+        &self,
+    ) -> Result<&std::collections::HashMap<String, String>, gax::error::Error> {
+        Ok(&self.labels)
+    }
+
+    /// Gets the value of `metadata`, mapping Some(wkt::Any) to Ok(wkt::Any) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_metadata(&self) -> Result<&wkt::Any, gax::error::Error> {
+        self.metadata
+            .as_ref()
+            .ok_or_else(|| gax::error::Error::other("field 'metadata' is missing"))
     }
 }

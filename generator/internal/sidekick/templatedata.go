@@ -113,6 +113,7 @@ type Field struct {
 	PrimitiveFieldType    string
 	JSONName              string
 	AsQueryParameter      string
+	OriginalField         *api.Field
 }
 
 type Enum struct {
@@ -305,6 +306,7 @@ func newField(field *api.Field, c language.Codec, state *api.APIState) *Field {
 		PrimitiveFieldType:    c.PrimitiveFieldType(field, state),
 		JSONName:              field.JSONName,
 		AsQueryParameter:      c.AsQueryParameter(field, state),
+		OriginalField:         field,
 	}
 }
 

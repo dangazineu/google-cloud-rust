@@ -14,3 +14,36 @@ See the License for the specific language governing permissions and
 limitations under the License.
 }}
 {{> ../../common/message}}
+
+{{^IsMap}}
+impl {{Name}} {
+    {{#BasicFields}}
+    {{#OriginalField.Optional}}
+
+    /// Gets the value of `{{NameToSnake}}`, mapping Some({{{PrimitiveFieldType}}}) to Ok({{{PrimitiveFieldType}}}) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_{{NameToSnakeNoMangling}}(&self) -> Result<&{{{PrimitiveFieldType}}}, gax::error::Error> {
+        self.{{NameToSnakeNoMangling}}.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field '{{NameToSnakeNoMangling}}' is missing"))
+    }
+    {{/OriginalField.Optional}}
+    {{^OriginalField.Optional}}
+
+    /// Gets the value of `{{NameToSnake}}`. As `{{NameToSnake}}` is not an optional field, this method will always return Ok({{{FieldType}}}).
+    #[allow(dead_code)]
+    pub(crate) fn get_{{NameToSnakeNoMangling}}(&self) -> Result<&{{{FieldType}}}, gax::error::Error> {
+        Ok(&self.{{NameToSnake}})
+    }
+    {{/OriginalField.Optional}}
+    {{/BasicFields}}
+    {{#ExplicitOneOfs}}
+
+    /// Gets the value of `{{NameToSnake}}`, mapping Some({{{FieldType}}}) to Ok({{{FieldType}}}) and None to gax::error::Error).
+    #[allow(dead_code)]
+    pub(crate) fn get_{{NameToSnakeNoMangling}}(&self) -> Result<&{{{FieldType}}}, gax::error::Error> {
+        self.{{NameToSnakeNoMangling}}.as_ref().ok_or_else(|| gax::error::Error::other(
+            "field '{{NameToSnakeNoMangling}}' is missing"))
+    }
+    {{/ExplicitOneOfs}}
+}
+{{/IsMap}}
